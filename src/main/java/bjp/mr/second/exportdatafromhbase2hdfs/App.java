@@ -13,7 +13,6 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-import org.apache.hadoop.security.UserGroupInformation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,29 +41,29 @@ public class App extends Constants {
         // 这个配置文件主要是记录 kerberos的相关配置信息，例如KDC是哪个IP？默认的realm是哪个？
         // 如果没有这个配置文件这边认证的时候肯定不知道KDC的路径喽
         // 这个文件也是从远程服务器上copy下来的
-        System.setProperty("java.security.krb5.conf", "/home/dianqu/krb5.conf");
+//        System.setProperty("java.security.krb5.conf", "/home/dianqu/krb5.conf");
 
         conf = HBaseConfiguration.create();
-        conf.set("hbase.nameserver.address","10.0.180.2");
-        conf.set("hadoop.security.authentication" , "Kerberos" );
+//        conf.set("hbase.nameserver.address","10.0.180.2");
+//        conf.set("hadoop.security.authentication" , "Kerberos" );
         // 这个hbase.keytab也是从远程服务器上copy下来的, 里面存储的是密码相关信息
         // 这样我们就不需要交互式输入密码了
-        conf.set("keytab.file" , "/etc/hbase/conf/hbase.keytab" );
+//        conf.set("keytab.file" , "/etc/hbase/conf/hbase.keytab" );
         // 这个可以理解成用户名信息，也就是Principal
-        conf.set("kerberos.principal" , "dianqu@EXAMPLE.COM" );
-        conf.set("hbase.master.kerberos.principal","hbase/_HOST@EXAMPLE.COM");
-        conf.set("hbase.regionserver.kerberos.principal","hbase/_HOST@EXAMPLE.COM");
+//        conf.set("kerberos.principal" , "dianqu@EXAMPLE.COM" );
+//        conf.set("hbase.master.kerberos.principal","hbase/_HOST@EXAMPLE.COM");
+//        conf.set("hbase.regionserver.kerberos.principal","hbase/_HOST@EXAMPLE.COM");
         conf.set("hbase.zookeeper.quorum","nma04-305-bigdata-1802.ctc.local,nma04-305-bigdata-1803.ctc.local,nma04-305-bigdata-1804.ctc.local");
-        conf.set("hbase.zookeeper.property.clientPort","2181");
-        conf.set("hbase.security.authentication","kerberos");
+//        conf.set("hbase.zookeeper.property.clientPort","2181");
+//        conf.set("hbase.security.authentication","kerberos");
 
-        UserGroupInformation. setConfiguration(conf);
-        try {
-            UserGroupInformation. loginUserFromKeytab("dianqu@EXAMPLE.COM", "/home/dianqu/dianqu.keytab" );
-        } catch (IOException e) {
+//        UserGroupInformation. setConfiguration(conf);
+//        try {
+//            UserGroupInformation. loginUserFromKeytab("dianqu@EXAMPLE.COM", "/home/dianqu/dianqu.keytab" );
+//        } catch (IOException e) {
 //             TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//            e.printStackTrace();
+//        }
     }
 
 
