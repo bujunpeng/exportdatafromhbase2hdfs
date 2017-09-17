@@ -20,6 +20,7 @@ import java.util.Properties;
 
 /**
  * Created by hadoop on 2016/11/18.
+ * Edit by hadoop on 2017/9/17
  *
  *
  * 命令行导出：
@@ -34,7 +35,10 @@ import java.util.Properties;
 public class App extends Constants {
 
     private Configuration conf = null;
-    public Configuration getConf(){return this.conf;}
+
+    private Configuration getConf() {
+        return this.conf;
+    }
 
     private void init(){
 
@@ -67,9 +71,7 @@ public class App extends Constants {
     }
 
 
-
-
-    public Scan getDataScan(){
+    private Scan getDataScan() {
         Scan scan = new Scan();
         try {
             scan.addColumn(Bytes.toBytes("cf"), Bytes.toBytes("name"));
